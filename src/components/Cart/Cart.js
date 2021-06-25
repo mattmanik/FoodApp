@@ -8,7 +8,7 @@ import CartItem from './CartItem';
 const Cart = props => {
 
     const cartCtx = useContext(CartContext);
-    const totalAmount = `$${props.totalAmount.toFixed(2)}`;
+    const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
 
    const cartItems = (
         <ul className='cart-items'>
@@ -22,9 +22,8 @@ const Cart = props => {
           ))}
         </ul>
       );
-
 return <Modal>
-{cartItems}
+  {cartItems}
 <div className='total'>
     <span>Total Amount</span>
     <span>{totalAmount}</span>

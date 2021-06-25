@@ -15,8 +15,9 @@ function App() {
 
   const hideCartHandler = () => {
     setCartIsShown(false);
-  }
+  };
 
+  console.log(setCartIsShown,'setCartIsShown');
   return (
     <CartDatas>   
      {cartIsShown && <Cart onCloseBtn = {hideCartHandler}/>}
