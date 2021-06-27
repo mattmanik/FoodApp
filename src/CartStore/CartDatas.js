@@ -6,16 +6,56 @@ const defaultCartState = {
     totalAmount:0
 }
 
+
 const cartReducer = (state,action) => {
 
     if(action.type === 'ADD'){
-        const newCartItems = state.items.concat(action.item);
         const newCartAmount = state.totalAmount +
          action.item.price * action.item.amount;
+        const alreadySelectedItemIndex = state.items.findIndex((item) => item.id ===
+            action.item.id);
+        const alreadySelectedItem = state.items[alreadySelectedItemIndex];
+        let newItems;
+
+        if(alreadySelectedItem) {
+            const newItem = {
+                ...alreadySelectedItem,
+                amount: alreadySelectedItem.amount + action.item.amount
+            };
+            newItems = [...state.items];
+            newItems[alreadySelectedItemIndex] = newItem;
+        }
+
+        else {
+            newItems = state.items.concat(action.item);
+        }
+
         return {
-            items: newCartItems,
+            items: newItems,
             totalAmount: newCartAmount
         };
+    }
+    if(action.type === 'REMOVE'){
+        const alreadySelectedItemIndex = state.items.findIndex(
+            (item) => item.id === action.id
+        );
+
+        const alreadySelectedItem = state.items[alreadySelectedItemIndex];
+        const newCartAmount = state.totalAmount - alreadySelectedItem.price;
+        let newItems;
+        if(alreadySelectedItem.amount === 1) {
+            newItems = state.items.filter(item => item.id !== action.id);
+        } else {
+           const newItem = {...alreadySelectedItem, amount: alreadySelectedItem.amount
+        -1 };
+        newItems = [...state.items];
+        newItems[alreadySelectedItemIndex] = newItem;
+        }
+
+        return {
+            items: newItems,
+            totalAmount: newCartAmount
+        }
     }
     return defaultCartState;
 

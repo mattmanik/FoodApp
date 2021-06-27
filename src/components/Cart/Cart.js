@@ -9,6 +9,15 @@ const Cart = props => {
 
     const cartCtx = useContext(CartContext);
     const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+    const hasItems = cartCtx.items.length > 0;
+
+    const cartItemRemover = (id) => {
+      cartCtx.removeItem(id);
+    };
+
+    const cartItemAdd = (item) => {
+      cartCtx.addItem(item);
+    };
 
    const cartItems = (
         <ul className='cart-items'>
@@ -18,6 +27,8 @@ const Cart = props => {
               name={item.name}
               amount={item.amount}
               price={item.price}
+              onRemove={cartItemRemover.bind(null,item.id)}
+              onAdd={cartItemAdd.bind(null,item)}
             />
           ))}
         </ul>
@@ -31,7 +42,7 @@ return <Modal>
 <div className='actions'>
     <button className='buttonCls' 
     onClick={props.onCloseBtn}>Close</button>
-    <button className='buttonOrder'>Order</button>
+   {hasItems && <button className='buttonOrder'>Order</button>}
 </div>
 </Modal>
 
