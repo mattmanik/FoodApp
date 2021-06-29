@@ -6,7 +6,7 @@ import CartContext from '../../../CartStore/cart-context';
 const MealItem = (props) => {
 
     const cartCtx = useContext(CartContext);
-    const price = `$${props.price.toFixed(2)}`; // renders with 2 decimals
+    const price = `₹ ${props.price.toFixed(2)}`; // renders with 2 decimals
 
     const addTocartHandler = (amount) => {
     cartCtx.addItem({

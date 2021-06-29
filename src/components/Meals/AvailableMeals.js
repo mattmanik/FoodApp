@@ -5,27 +5,27 @@ import MealItem from './MealItem/MealItem.js';
 const dummyMEALS = [
     {
       id: 'm1',
-      name: 'Sushi',
-      description: 'Finest fish and veggies',
-      price: 22.99,
+      name: 'Idly',
+      description: 'Finely steamed and hot..',
+      price: 40.50,
     },
     {
       id: 'm2',
-      name: 'Schnitzel',
-      description: 'A german specialty!',
-      price: 16.5,
+      name: 'Dosa',
+      description: 'More crisper and larger..',
+      price: 50.75,
     },
     {
       id: 'm3',
-      name: 'Barbecue Burger',
-      description: 'American, raw, meaty',
-      price: 12.99,
+      name: 'Pongal',
+      description: 'With delicious South Indian spices..',
+      price: 70.00,
     },
     {
       id: 'm4',
-      name: 'Green Bowl',
-      description: 'Healthy...and green...',
-      price: 18.99,
+      name: 'Puri',
+      description: 'Made with fine refined oil..',
+      price: 50.00,
     },
   ];
   
